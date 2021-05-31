@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QuanLyDoGiaDungModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ChiTietHDBan">
+    <Key>
+      <PropertyRef Name="MaChiTietHDBan" />
+    </Key>
+    <Property Name="MaChiTietHDBan" Type="Int32" Nullable="false" />
+    <Property Name="MaHDBan" Type="Int32" />
+    <Property Name="MaSP" Type="Int32" />
+    <Property Name="SoLuong" Type="Int32" />
+    <Property Name="DonGia" Type="Double" />
+    <Property Name="GiamGia" Type="Double" />
+    <Property Name="ThanhTien" Type="Double" />
+    <NavigationProperty Name="HDBan" Relationship="Self.FK_ChiTietHDBan_HDBan" FromRole="ChiTietHDBan" ToRole="HDBan" />
+  </EntityType>
+  <EntityType Name="ChiTietHDNhap">
+    <Key>
+      <PropertyRef Name="MaChiTietHDNhap" />
+    </Key>
+    <Property Name="MaChiTietHDNhap" Type="Int32" Nullable="false" />
+    <Property Name="MaHDNhap" Type="Int32" />
+    <Property Name="MaSP" Type="Int32" />
+    <Property Name="SoLuong" Type="Int32" />
+    <Property Name="DonGia" Type="Double" />
+    <Property Name="GiamGia" Type="Double" />
+    <Property Name="ThanhTien" Type="Double" />
+    <NavigationProperty Name="HDNhap" Relationship="Self.FK_ChiTietHDNhap_HDNhap" FromRole="ChiTietHDNhap" ToRole="HDNhap" />
+    <NavigationProperty Name="SanPham" Relationship="Self.FK_ChiTietHDNhap_SanPham" FromRole="ChiTietHDNhap" ToRole="SanPham" />
+  </EntityType>
+  <EntityType Name="HDBan">
+    <Key>
+      <PropertyRef Name="MaHDBan" />
+    </Key>
+    <Property Name="MaHDBan" Type="Int32" Nullable="false" />
+    <Property Name="MaNV" Type="Int32" />
+    <Property Name="NgayBan" Type="DateTime" Precision="3" />
+    <Property Name="MaKH" Type="Int32" />
+    <Property Name="TongTien" Type="Double" />
+    <NavigationProperty Name="ChiTietHDBans" Relationship="Self.FK_ChiTietHDBan_HDBan" FromRole="HDBan" ToRole="ChiTietHDBan" />
+    <NavigationProperty Name="KhachHang" Relationship="Self.FK_HDBan_KhachHang1" FromRole="HDBan" ToRole="KhachHang" />
+    <NavigationProperty Name="NhanVien" Relationship="Self.FK_HDBan_NhanVien1" FromRole="HDBan" ToRole="NhanVien" />
+  </EntityType>
+  <EntityType Name="HDNhap">
+    <Key>
+      <PropertyRef Name="MaHDNhap" />
+    </Key>
+    <Property Name="MaHDNhap" Type="Int32" Nullable="false" />
+    <Property Name="MaNV" Type="Int32" />
+    <Property Name="NgayNhap" Type="DateTime" Precision="0" />
+    <Property Name="MaNCC" Type="Int32" />
+    <Property Name="TongTien" Type="Double" />
+    <NavigationProperty Name="ChiTietHDNhaps" Relationship="Self.FK_ChiTietHDNhap_HDNhap" FromRole="HDNhap" ToRole="ChiTietHDNhap" />
+    <NavigationProperty Name="NhaCungCap" Relationship="Self.FK_HDNhap_NhaCungCap" FromRole="HDNhap" ToRole="NhaCungCap" />
+    <NavigationProperty Name="NhanVien" Relationship="Self.FK_HDNhap_NhanVien1" FromRole="HDNhap" ToRole="NhanVien" />
+  </EntityType>
+  <EntityType Name="KhachHang">
+    <Key>
+      <PropertyRef Name="MaKH" />
+    </Key>
+    <Property Name="MaKH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenKH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+    <Property Name="DiaChi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="Int32" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="HDBans" Relationship="Self.FK_HDBan_KhachHang1" FromRole="KhachHang" ToRole="HDBan" />
+  </EntityType>
+  <EntityType Name="NhaCungCap">
+    <Key>
+      <PropertyRef Name="MaNCC" />
+    </Key>
+    <Property Name="MaNCC" Type="Int32" Nullable="false" />
+    <Property Name="TenNCC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="HDNhaps" Relationship="Self.FK_HDNhap_NhaCungCap" FromRole="NhaCungCap" ToRole="HDNhap" />
+  </EntityType>
+  <EntityType Name="NhanVien">
+    <Key>
+      <PropertyRef Name="MaNV" />
+    </Key>
+    <Property Name="MaNV" Type="Int32" Nullable="false" />
+    <Property Name="AnhNV" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="TenNV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+    <Property Name="DiaChi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="Int32" />
+    <Property Name="TaiKhoan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="HDBans" Relationship="Self.FK_HDBan_NhanVien1" FromRole="NhanVien" ToRole="HDBan" />
+    <NavigationProperty Name="HDNhaps" Relationship="Self.FK_HDNhap_NhanVien1" FromRole="NhanVien" ToRole="HDNhap" />
+  </EntityType>
+  <EntityType Name="SanPham">
+    <Key>
+      <PropertyRef Name="MaSP" />
+    </Key>
+    <Property Name="MaSP" Type="Int32" Nullable="false" />
+    <Property Name="MaDMSP" Type="Int32" />
+    <Property Name="AnhSP" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="TenSP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Mota" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Gia" Type="Int32" />
+    <Property Name="Sale" Type="Int32" />
+    <Property Name="Hot" Type="Int32" />
+    <NavigationProperty Name="ChiTietHDNhaps" Relationship="Self.FK_ChiTietHDNhap_SanPham" FromRole="SanPham" ToRole="ChiTietHDNhap" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TaiKhoan">
+    <Key>
+      <PropertyRef Name="idUser" />
+    </Key>
+    <Property Name="idUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_ChiTietHDBan_HDBan">
+    <End Role="HDBan" Type="Self.HDBan" Multiplicity="0..1" />
+    <End Role="ChiTietHDBan" Type="Self.ChiTietHDBan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HDBan">
+        <PropertyRef Name="MaHDBan" />
+      </Principal>
+      <Dependent Role="ChiTietHDBan">
+        <PropertyRef Name="MaHDBan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChiTietHDNhap_HDNhap">
+    <End Role="HDNhap" Type="Self.HDNhap" Multiplicity="0..1" />
+    <End Role="ChiTietHDNhap" Type="Self.ChiTietHDNhap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HDNhap">
+        <PropertyRef Name="MaHDNhap" />
+      </Principal>
+      <Dependent Role="ChiTietHDNhap">
+        <PropertyRef Name="MaHDNhap" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChiTietHDNhap_SanPham">
+    <End Role="SanPham" Type="Self.SanPham" Multiplicity="0..1" />
+    <End Role="ChiTietHDNhap" Type="Self.ChiTietHDNhap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SanPham">
+        <PropertyRef Name="MaSP" />
+      </Principal>
+      <Dependent Role="ChiTietHDNhap">
+        <PropertyRef Name="MaSP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HDBan_KhachHang1">
+    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
+    <End Role="HDBan" Type="Self.HDBan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhachHang">
+        <PropertyRef Name="MaKH" />
+      </Principal>
+      <Dependent Role="HDBan">
+        <PropertyRef Name="MaKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HDBan_NhanVien1">
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
+    <End Role="HDBan" Type="Self.HDBan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhanVien">
+        <PropertyRef Name="MaNV" />
+      </Principal>
+      <Dependent Role="HDBan">
+        <PropertyRef Name="MaNV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HDNhap_NhaCungCap">
+    <End Role="NhaCungCap" Type="Self.NhaCungCap" Multiplicity="0..1" />
+    <End Role="HDNhap" Type="Self.HDNhap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhaCungCap">
+        <PropertyRef Name="MaNCC" />
+      </Principal>
+      <Dependent Role="HDNhap">
+        <PropertyRef Name="MaNCC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HDNhap_NhanVien1">
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
+    <End Role="HDNhap" Type="Self.HDNhap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhanVien">
+        <PropertyRef Name="MaNV" />
+      </Principal>
+      <Dependent Role="HDNhap">
+        <PropertyRef Name="MaNV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QuanLyDoGiaDungEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ChiTietHDBans" EntityType="Self.ChiTietHDBan" />
+    <EntitySet Name="ChiTietHDNhaps" EntityType="Self.ChiTietHDNhap" />
+    <EntitySet Name="HDBans" EntityType="Self.HDBan" />
+    <EntitySet Name="HDNhaps" EntityType="Self.HDNhap" />
+    <EntitySet Name="KhachHangs" EntityType="Self.KhachHang" />
+    <EntitySet Name="NhaCungCaps" EntityType="Self.NhaCungCap" />
+    <EntitySet Name="NhanViens" EntityType="Self.NhanVien" />
+    <EntitySet Name="SanPhams" EntityType="Self.SanPham" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="TaiKhoans" EntityType="Self.TaiKhoan" />
+    <AssociationSet Name="FK_ChiTietHDBan_HDBan" Association="Self.FK_ChiTietHDBan_HDBan">
+      <End Role="HDBan" EntitySet="HDBans" />
+      <End Role="ChiTietHDBan" EntitySet="ChiTietHDBans" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChiTietHDNhap_HDNhap" Association="Self.FK_ChiTietHDNhap_HDNhap">
+      <End Role="HDNhap" EntitySet="HDNhaps" />
+      <End Role="ChiTietHDNhap" EntitySet="ChiTietHDNhaps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChiTietHDNhap_SanPham" Association="Self.FK_ChiTietHDNhap_SanPham">
+      <End Role="SanPham" EntitySet="SanPhams" />
+      <End Role="ChiTietHDNhap" EntitySet="ChiTietHDNhaps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HDBan_KhachHang1" Association="Self.FK_HDBan_KhachHang1">
+      <End Role="KhachHang" EntitySet="KhachHangs" />
+      <End Role="HDBan" EntitySet="HDBans" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HDBan_NhanVien1" Association="Self.FK_HDBan_NhanVien1">
+      <End Role="NhanVien" EntitySet="NhanViens" />
+      <End Role="HDBan" EntitySet="HDBans" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HDNhap_NhaCungCap" Association="Self.FK_HDNhap_NhaCungCap">
+      <End Role="NhaCungCap" EntitySet="NhaCungCaps" />
+      <End Role="HDNhap" EntitySet="HDNhaps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HDNhap_NhanVien1" Association="Self.FK_HDNhap_NhanVien1">
+      <End Role="NhanVien" EntitySet="NhanViens" />
+      <End Role="HDNhap" EntitySet="HDNhaps" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

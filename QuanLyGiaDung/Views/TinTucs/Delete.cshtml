@@ -1,0 +1,64 @@
+﻿@model QuanLyGiaDung.Models.TinTuc
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Xóa</h2>
+
+<h3>Bạn Có Muốn Xóa Thông Tin Này ?</h3>
+<div>
+    <h4>Tin Tức</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Ảnh Tin Tức
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnhTinTuc)
+        </dd>
+
+        <dt>
+            Tên Tin Tức
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenTinTuc)
+        </dd>
+
+        <dt>
+            Mô Tả
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MoTa)
+        </dd>
+
+        <dt>
+           Chi Tiết
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Chitiet)
+        </dd>
+
+        <dt>
+            Tên DMTT
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DMTinTuc.TenDMTT)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Quay Lại", "Index")
+        </div>
+    }
+</div>

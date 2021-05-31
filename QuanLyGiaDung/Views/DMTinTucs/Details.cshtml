@@ -1,0 +1,26 @@
+﻿@model QuanLyGiaDung.Models.DMTinTuc
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Chi Tiết</h2>
+
+<div>
+    <h4>Danh Mục Tin Tức</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên DMTT
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenDMTT)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Chỉnh Sửa", "Edit", new { id = Model.MaDMTT }) |
+    @Html.ActionLink("Quay Lại", "Index")
+</p>

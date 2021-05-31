@@ -1,0 +1,82 @@
+﻿@model PagedList.IPagedList<QuanLyGiaDung.Models.SanPham>
+@using PagedList.Mvc;
+<style></style>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 style="text-align:center">Danh Sách Sản Phẩm</h2>
+@using (Html.BeginForm("Index", "SanPhams", FormMethod.Get))
+{
+    <p>
+        Sản Phẩm: @Html.TextBox("SearchString") --- Danh Mục: @Html.DropDownList("MaDMSP", "All") <input type="submit" value="Tìm kiếm" />
+    </p>
+}
+<p>
+    @Html.ActionLink("Tạo Mới", "Create")
+</p>
+<table class="m-auto" border="1">
+    <tr>
+        
+        <th width="100px", align="center">
+            Ảnh Sản Phẩm
+        </th>
+        <th width="120px">
+            @Html.ActionLink("Tên Sản Phẩm", "Index", new { sortOrder = ViewBag.NameSortParm })
+        </th>
+        <th width="150px">
+            Tên DMSP
+        </th>
+        <th width="300px">
+            Mô Tả
+        </th>
+        <th width="100px">
+            Giá
+        </th>
+        <th width="100px">
+            Sale
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    
+    <td>
+        <img src="~/Anh/@item.AnhSP" width="100px" />
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TenSP)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DMSP.TenDMSP)
+    </td>
+    <td>
+        @Html.Raw(item.Mota)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Gia) VNĐ
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Sale) VNĐ
+    </td>
+
+    <td width="150px">
+        @Html.ActionLink("Chỉnh Sửa", "Edit", new { id = item.MaSP }) |
+        @Html.ActionLink("Chi Tiết", "Details", new { id = item.MaSP }) |
+        @Html.ActionLink("Xóa", "Delete", new { id = item.MaSP })
+    </td>
+</tr>
+    }
+    </p>
+
+
+</table>
+<!-- Thêm mã phân trang -->
+<br />
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page }))
+<!-- Kết thúc -->

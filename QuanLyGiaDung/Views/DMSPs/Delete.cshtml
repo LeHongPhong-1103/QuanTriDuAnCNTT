@@ -1,0 +1,32 @@
+﻿@model QuanLyGiaDung.Models.DMSP
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Xóa</h2>
+
+<h3>Bạn Có Muốn Xóa Thông Tin Này?</h3>
+<div>
+    <h4>Danh Mục Sản Phẩm</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên DMSP
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenDMSP)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Quay Lại", "Index")
+        </div>
+    }
+</div>

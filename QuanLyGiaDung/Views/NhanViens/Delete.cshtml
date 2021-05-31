@@ -1,0 +1,72 @@
+﻿@model QuanLyGiaDung.Models.NhanVien
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Xóa</h2>
+
+<h3>Bạn có muốn xóa thông tin này</h3>
+<div>
+    <h4>Nhân Viên</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+           Ảnh Nhân Viên
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnhNV)
+        </dd>
+
+        <dt>
+            Tên Nhân Viên
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenNV)
+        </dd>
+
+        <dt>
+            Ngày Sinh
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgaySinh)
+        </dd>
+
+        <dt>
+            Địa Chỉ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChi)
+        </dd>
+
+        <dt>
+            SDT
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SDT)
+        </dd>
+
+        <dt>
+            Tài Khoản
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TaiKhoan)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Quay Lại", "Index")
+        </div>
+    }
+</div>

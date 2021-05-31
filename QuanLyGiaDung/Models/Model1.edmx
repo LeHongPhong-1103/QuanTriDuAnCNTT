@@ -1,0 +1,377 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="QuanLyGiaDung2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DMSP">
+          <Key>
+            <PropertyRef Name="MaDMSP" />
+          </Key>
+          <Property Name="MaDMSP" Type="int" Nullable="false" />
+          <Property Name="TenDMSP" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="DMTinTuc">
+          <Key>
+            <PropertyRef Name="MaDMTT" />
+          </Key>
+          <Property Name="MaDMTT" Type="int" Nullable="false" />
+          <Property Name="TenDMTT" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="KhachHang">
+          <Key>
+            <PropertyRef Name="MaKH" />
+          </Key>
+          <Property Name="MaKH" Type="int" Nullable="false" />
+          <Property Name="TenKH" Type="nvarchar" MaxLength="50" />
+          <Property Name="NgaySinh" Type="date" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="50" />
+          <Property Name="SDT" Type="int" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="NhanVien">
+          <Key>
+            <PropertyRef Name="MaNV" />
+          </Key>
+          <Property Name="MaNV" Type="int" Nullable="false" />
+          <Property Name="AnhNV" Type="nvarchar" MaxLength="200" />
+          <Property Name="TenNV" Type="nvarchar" MaxLength="50" />
+          <Property Name="NgaySinh" Type="date" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="50" />
+          <Property Name="SDT" Type="int" />
+          <Property Name="TaiKhoan" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SanPham">
+          <Key>
+            <PropertyRef Name="MaSP" />
+          </Key>
+          <Property Name="MaSP" Type="int" Nullable="false" />
+          <Property Name="MaDMSP" Type="int" />
+          <Property Name="AnhSP" Type="nvarchar" MaxLength="200" />
+          <Property Name="TenSP" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mota" Type="nvarchar" MaxLength="500" />
+          <Property Name="Gia" Type="varchar" MaxLength="50" />
+          <Property Name="Sale" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TaiKhoan">
+          <Key>
+            <PropertyRef Name="idUser" />
+          </Key>
+          <Property Name="idUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TinTuc">
+          <Key>
+            <PropertyRef Name="MaTinTuc" />
+          </Key>
+          <Property Name="MaTinTuc" Type="int" Nullable="false" />
+          <Property Name="MaDMTT" Type="int" />
+          <Property Name="AnhTinTuc" Type="nvarchar" MaxLength="200" />
+          <Property Name="TenTinTuc" Type="nvarchar" MaxLength="200" />
+          <Property Name="MoTa" Type="nvarchar" MaxLength="500" />
+          <Property Name="Chitiet" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <Association Name="FK_SanPham_DMSP">
+          <End Role="DMSP" Type="Self.DMSP" Multiplicity="0..1" />
+          <End Role="SanPham" Type="Self.SanPham" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DMSP">
+              <PropertyRef Name="MaDMSP" />
+            </Principal>
+            <Dependent Role="SanPham">
+              <PropertyRef Name="MaDMSP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TinTuc_DMTinTuc">
+          <End Role="DMTinTuc" Type="Self.DMTinTuc" Multiplicity="0..1" />
+          <End Role="TinTuc" Type="Self.TinTuc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DMTinTuc">
+              <PropertyRef Name="MaDMTT" />
+            </Principal>
+            <Dependent Role="TinTuc">
+              <PropertyRef Name="MaDMTT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QuanLyGiaDung2ModelStoreContainer">
+          <EntitySet Name="DMSP" EntityType="Self.DMSP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DMTinTuc" EntityType="Self.DMTinTuc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KhachHang" EntityType="Self.KhachHang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NhanVien" EntityType="Self.NhanVien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SanPham" EntityType="Self.SanPham" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TaiKhoan" EntityType="Self.TaiKhoan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TinTuc" EntityType="Self.TinTuc" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_SanPham_DMSP" Association="Self.FK_SanPham_DMSP">
+            <End Role="DMSP" EntitySet="DMSP" />
+            <End Role="SanPham" EntitySet="SanPham" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TinTuc_DMTinTuc" Association="Self.FK_TinTuc_DMTinTuc">
+            <End Role="DMTinTuc" EntitySet="DMTinTuc" />
+            <End Role="TinTuc" EntitySet="TinTuc" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QuanLyGiaDung2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="QuanLyGiaDung2Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DMSPs" EntityType="QuanLyGiaDung2Model.DMSP" />
+          <EntitySet Name="DMTinTucs" EntityType="QuanLyGiaDung2Model.DMTinTuc" />
+          <EntitySet Name="KhachHangs" EntityType="QuanLyGiaDung2Model.KhachHang" />
+          <EntitySet Name="NhanViens" EntityType="QuanLyGiaDung2Model.NhanVien" />
+          <EntitySet Name="SanPhams" EntityType="QuanLyGiaDung2Model.SanPham" />
+          <EntitySet Name="sysdiagrams" EntityType="QuanLyGiaDung2Model.sysdiagram" />
+          <EntitySet Name="TaiKhoans" EntityType="QuanLyGiaDung2Model.TaiKhoan" />
+          <EntitySet Name="TinTucs" EntityType="QuanLyGiaDung2Model.TinTuc" />
+          <AssociationSet Name="FK_SanPham_DMSP" Association="QuanLyGiaDung2Model.FK_SanPham_DMSP">
+            <End Role="DMSP" EntitySet="DMSPs" />
+            <End Role="SanPham" EntitySet="SanPhams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TinTuc_DMTinTuc" Association="QuanLyGiaDung2Model.FK_TinTuc_DMTinTuc">
+            <End Role="DMTinTuc" EntitySet="DMTinTucs" />
+            <End Role="TinTuc" EntitySet="TinTucs" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="DMSP">
+          <Key>
+            <PropertyRef Name="MaDMSP" />
+          </Key>
+          <Property Name="MaDMSP" Type="Int32" Nullable="false" />
+          <Property Name="TenDMSP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SanPhams" Relationship="QuanLyGiaDung2Model.FK_SanPham_DMSP" FromRole="DMSP" ToRole="SanPham" />
+        </EntityType>
+        <EntityType Name="DMTinTuc">
+          <Key>
+            <PropertyRef Name="MaDMTT" />
+          </Key>
+          <Property Name="MaDMTT" Type="Int32" Nullable="false" />
+          <Property Name="TenDMTT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TinTucs" Relationship="QuanLyGiaDung2Model.FK_TinTuc_DMTinTuc" FromRole="DMTinTuc" ToRole="TinTuc" />
+        </EntityType>
+        <EntityType Name="KhachHang">
+          <Key>
+            <PropertyRef Name="MaKH" />
+          </Key>
+          <Property Name="MaKH" Type="Int32" Nullable="false" />
+          <Property Name="TenKH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+          <Property Name="DiaChi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SDT" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="NhanVien">
+          <Key>
+            <PropertyRef Name="MaNV" />
+          </Key>
+          <Property Name="MaNV" Type="Int32" Nullable="false" />
+          <Property Name="AnhNV" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="TenNV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+          <Property Name="DiaChi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SDT" Type="Int32" />
+          <Property Name="TaiKhoan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SanPham">
+          <Key>
+            <PropertyRef Name="MaSP" />
+          </Key>
+          <Property Name="MaSP" Type="Int32" Nullable="false" />
+          <Property Name="MaDMSP" Type="Int32" />
+          <Property Name="AnhSP" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="TenSP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mota" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Gia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sale" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DMSP" Relationship="QuanLyGiaDung2Model.FK_SanPham_DMSP" FromRole="SanPham" ToRole="DMSP" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TaiKhoan">
+          <Key>
+            <PropertyRef Name="idUser" />
+          </Key>
+          <Property Name="idUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TinTuc">
+          <Key>
+            <PropertyRef Name="MaTinTuc" />
+          </Key>
+          <Property Name="MaTinTuc" Type="Int32" Nullable="false" />
+          <Property Name="MaDMTT" Type="Int32" />
+          <Property Name="AnhTinTuc" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="TenTinTuc" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="MoTa" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Chitiet" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DMTinTuc" Relationship="QuanLyGiaDung2Model.FK_TinTuc_DMTinTuc" FromRole="TinTuc" ToRole="DMTinTuc" />
+        </EntityType>
+        <Association Name="FK_SanPham_DMSP">
+          <End Type="QuanLyGiaDung2Model.DMSP" Role="DMSP" Multiplicity="0..1" />
+          <End Type="QuanLyGiaDung2Model.SanPham" Role="SanPham" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DMSP">
+              <PropertyRef Name="MaDMSP" />
+            </Principal>
+            <Dependent Role="SanPham">
+              <PropertyRef Name="MaDMSP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TinTuc_DMTinTuc">
+          <End Type="QuanLyGiaDung2Model.DMTinTuc" Role="DMTinTuc" Multiplicity="0..1" />
+          <End Type="QuanLyGiaDung2Model.TinTuc" Role="TinTuc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DMTinTuc">
+              <PropertyRef Name="MaDMTT" />
+            </Principal>
+            <Dependent Role="TinTuc">
+              <PropertyRef Name="MaDMTT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QuanLyGiaDung2ModelStoreContainer" CdmEntityContainer="QuanLyGiaDung2Entities">
+          <EntitySetMapping Name="DMSPs">
+            <EntityTypeMapping TypeName="QuanLyGiaDung2Model.DMSP">
+              <MappingFragment StoreEntitySet="DMSP">
+                <ScalarProperty Name="TenDMSP" ColumnName="TenDMSP" />
+                <ScalarProperty Name="MaDMSP" ColumnName="MaDMSP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DMTinTucs">
+            <EntityTypeMapping TypeName="QuanLyGiaDung2Model.DMTinTuc">
+              <MappingFragment StoreEntitySet="DMTinTuc">
+                <ScalarProperty Name="TenDMTT" ColumnName="TenDMTT" />
+                <ScalarProperty Name="MaDMTT" ColumnName="MaDMTT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KhachHangs">
+            <EntityTypeMapping TypeName="QuanLyGiaDung2Model.KhachHang">
+              <MappingFragment StoreEntitySet="KhachHang">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+                <ScalarProperty Name="TenKH" ColumnName="TenKH" />
+                <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NhanViens">
+            <EntityTypeMapping TypeName="QuanLyGiaDung2Model.NhanVien">
+              <MappingFragment StoreEntitySet="NhanVien">
+                <ScalarProperty Name="TaiKhoan" ColumnName="TaiKhoan" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+                <ScalarProperty Name="TenNV" ColumnName="TenNV" />
+                <ScalarProperty Name="AnhNV" ColumnName="AnhNV" />
+                <ScalarProperty Name="MaNV" ColumnName="MaNV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SanPhams">
+            <EntityTypeMapping TypeName="QuanLyGiaDung2Model.SanPham">
+              <MappingFragment StoreEntitySet="SanPham">
+                <ScalarProperty Name="Sale" ColumnName="Sale" />
+                <ScalarProperty Name="Gia" ColumnName="Gia" />
+                <ScalarProperty Name="Mota" ColumnName="Mota" />
+                <ScalarProperty Name="TenSP" ColumnName="TenSP" />
+                <ScalarProperty Name="AnhSP" ColumnName="AnhSP" />
+                <ScalarProperty Name="MaDMSP" ColumnName="MaDMSP" />
+                <ScalarProperty Name="MaSP" ColumnName="MaSP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="QuanLyGiaDung2Model.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaiKhoans">
+            <EntityTypeMapping TypeName="QuanLyGiaDung2Model.TaiKhoan">
+              <MappingFragment StoreEntitySet="TaiKhoan">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TinTucs">
+            <EntityTypeMapping TypeName="QuanLyGiaDung2Model.TinTuc">
+              <MappingFragment StoreEntitySet="TinTuc">
+                <ScalarProperty Name="Chitiet" ColumnName="Chitiet" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="TenTinTuc" ColumnName="TenTinTuc" />
+                <ScalarProperty Name="AnhTinTuc" ColumnName="AnhTinTuc" />
+                <ScalarProperty Name="MaDMTT" ColumnName="MaDMTT" />
+                <ScalarProperty Name="MaTinTuc" ColumnName="MaTinTuc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

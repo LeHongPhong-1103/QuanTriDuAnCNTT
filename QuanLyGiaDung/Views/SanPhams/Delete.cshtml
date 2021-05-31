@@ -1,0 +1,72 @@
+﻿@model QuanLyGiaDung.Models.SanPham
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Xóa</h2>
+
+<h3>Bạn Muốn Xóa Thông Tin Này?</h3>
+<div>
+    <h4>Sản Phẩm</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+           Ảnh Sản Phẩm
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnhSP)
+        </dd>
+
+        <dt>
+           Tên Sản Phẩm
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenSP)
+        </dd>
+
+        <dt>
+          Mô Tả
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mota)
+        </dd>
+
+        <dt>
+            Giá
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gia)
+        </dd>
+
+        <dt>
+            Sale
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sale)
+        </dd>
+
+        <dt>
+           Tên DMSP
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DMSP.TenDMSP)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Quay Lại", "Index")
+        </div>
+    }
+</div>

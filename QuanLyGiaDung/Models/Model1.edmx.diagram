@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="56162fe3ea404c08945913029ac37cfd" Name="Diagram1">
+        <EntityTypeShape EntityType="QuanLyGiaDung2Model.DMSP" Width="1.5" PointX="0.75" PointY="5.375" />
+        <EntityTypeShape EntityType="QuanLyGiaDung2Model.DMTinTuc" Width="1.5" PointX="0.75" PointY="1.375" />
+        <EntityTypeShape EntityType="QuanLyGiaDung2Model.KhachHang" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="QuanLyGiaDung2Model.NhanVien" Width="1.5" PointX="5.75" PointY="3.75" />
+        <EntityTypeShape EntityType="QuanLyGiaDung2Model.SanPham" Width="1.5" PointX="3" PointY="5" />
+        <EntityTypeShape EntityType="QuanLyGiaDung2Model.sysdiagram" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="QuanLyGiaDung2Model.TaiKhoan" Width="1.5" PointX="7.75" PointY="3.75" />
+        <EntityTypeShape EntityType="QuanLyGiaDung2Model.TinTuc" Width="1.5" PointX="3" PointY="1" />
+        <AssociationConnector Association="QuanLyGiaDung2Model.FK_SanPham_DMSP" />
+        <AssociationConnector Association="QuanLyGiaDung2Model.FK_TinTuc_DMTinTuc" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,216 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Quản Lý Cửa Hàng Đồ Gia Dụng Nhà Việt</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+    <title>It.Next - IT Service Responsive Html Theme</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- site icons -->
+    <link rel="icon" href="images/fevicon/fevicon.png" type="image/gif" />
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="~/Theme/css/bootstrap.min.css" />
+    <!-- Site css -->
+    <link rel="stylesheet" href="~/Theme/css/style2.css" />
+    <!-- responsive css -->
+    <link rel="stylesheet" href="~/Theme/css/responsive.css" />
+    <!-- colors css -->
+    <link rel="stylesheet" href="~/Theme/css/colorss1.css" />
+    <!-- custom css -->
+    <link rel="stylesheet" href="~/Theme/css/custom.css" />
+    <!-- wow Animation css -->
+    <link rel="stylesheet" href="~/Theme/css/animate.css" />
+    @*dropdownlist css
+    <link rel="stylesheet" href="~/Theme/css/dropdown.css" />*@
+    <!-- revolution slider css -->
+    <link rel="stylesheet" type="text/css" href="revolution/css/settings.css" />
+    <link rel="stylesheet" type="text/css" href="revolution/css/layers.css" />
+    <link rel="stylesheet" type="text/css" href="revolution/css/navigation.css" />
+    <script src="~/Plugin/ckeditor/ckeditor.js" type="text/javascript"></script>
+    <script src="~/Plugin/ckfinder/ckfinder.js" type="text/javascript"></script>
+    <!-- header -->
+
+
+</head>
+<body>
+    <header id="default_header" class="header_style_1">
+        <!-- header top -->
+        <div class="header_top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="full">
+                            <div class="topbar-left">
+                                <ul class="list-inline">
+                                    <li> <span class="topbar-label"><i class="fa  fa-home"></i></span> <span class="topbar-hightlight">235 Hoàng Quốc Việt Street</span> </li>
+                                    <li> <span class="topbar-label"><i class="fa fa-envelope-o"></i></span> <span class="topbar-hightlight"><a href="mailto:info@yourdomain.com">giadungnhaviet.com</a></span> </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 right_section_header_top">
+                        <div class="float-left">
+                            <div class="social_icon">
+                                <ul class="list-inline">
+                                    <li><a class="fa fa-facebook" href="https://www.facebook.com/" title="Facebook" target="_blank"></a></li>
+                                    <li><a class="fa fa-google-plus" href="https://plus.google.com/" title="Google+" target="_blank"></a></li>
+                                    <li><a class="fa fa-twitter" href="https://twitter.com" title="Twitter" target="_blank"></a></li>
+                                    <li><a class="fa fa-linkedin" href="https://www.linkedin.com" title="LinkedIn" target="_blank"></a></li>
+                                    <li><a class="fa fa-instagram" href="https://www.instagram.com" title="Instagram" target="_blank"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end header top -->
+        <!-- header bottom -->
+        <div class="header_bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                        <!-- logo start -->
+                        <div class="logo" > <a href="it_home.html"><img src="~/images/unnamed.jpg" " alt="logo "" /></a> </div>
+                        <!-- logo end -->
+                    </div>
+                    <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+                        <!-- menu start -->
+                        <div class="menu_side">
+                            <div id="navbar_menu">
+                                <ul class="first-ul">
+                                    <li>
+                                    <li class="mr-4">@Html.ActionLink("Home", "Index", "Home")</li>
+                                    <li class="mr-4">@Html.ActionLink("Nhân Viên", "Index", "NhanViens")</li>
+                                    <li class="mr-4">
+                                    <li class="mr-4">
+                                        <a href="#">Quản Lý Sản Phẩm</a>
+                                        <ul>
+                                            <div>@Html.ActionLink("Danh Mục Sản Phẩm ", "Index", "DMSPs")</div>
+                                            <div>@Html.ActionLink("Sản Phẩm", "Index", "SanPhams")</div>
+                                        </ul>
+                                    </li>
+
+                                    <li class="mr-4"> @Html.ActionLink("Khách Hàng", "Index", "KhachHangs")</li>
+                                    <li class="mr-4">
+                                        <a href="#">Quản Lý Tin Tức</a>
+                                        <ul>
+                                            <div>@Html.ActionLink("Tin Tức", "Index", "TinTucs")</div>
+                                            <div>@Html.ActionLink("Danh Mục Tin Tức", "Index", "DMTinTucs")</div>
+                                        </ul>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                            <div class="search_icon">
+                                <ul>
+                                    <li><a href="#" data-toggle="modal" data-target="#search_bar"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- menu end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- header bottom end -->
+    </header>
+
+
+
+   
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+ @*footer 
+<footer class="footer_style_2">
+    <div>
+        <div class="row">
+            
+            <div class="footer_blog" style="margin-left: 200px;">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="main-heading left_text">
+                            <h2>It Next Theme</h2>
+                        </div>
+                        <p>Tincidunt elit magnis nulla facilisis. Dolor sagittis maecenas. Sapien nunc amet ultrices, dolores sit ipsum velit purus aliquet, massa fringilla leo orci.</p>
+                        <ul class="social_icons">
+                            <li class="social-icon fb"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                            <li class="social-icon tw"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                            <li class="social-icon gp"><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="main-heading left_text">
+                            <h2>Additional links</h2>
+                        </div>
+                        <ul class="footer-menu">
+                            <li><a href="it_about.html"><i class="fa fa-angle-right"></i> About us</a></li>
+                            <li><a href="it_term_condition.html"><i class="fa fa-angle-right"></i> Terms and conditions</a></li>
+                            <li><a href="it_privacy_policy.html"><i class="fa fa-angle-right"></i> Privacy policy</a></li>
+                            <li><a href="it_news.html"><i class="fa fa-angle-right"></i> News</a></li>
+                            <li><a href="it_contact.html"><i class="fa fa-angle-right"></i> Contact us</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="main-heading left_text">
+                            <h2>Services</h2>
+                        </div>
+                        <ul class="footer-menu">
+                            <li><a href="it_data_recovery.html"><i class="fa fa-angle-right"></i> Data recovery</a></li>
+                            <li><a href="it_computer_repair.html"><i class="fa fa-angle-right"></i> Computer repair</a></li>
+                            <li><a href="it_mobile_service.html"><i class="fa fa-angle-right"></i> Mobile service</a></li>
+                            <li><a href="it_network_solution.html"><i class="fa fa-angle-right"></i> Network solutions</a></li>
+                            <li><a href="it_techn_support.html"><i class="fa fa-angle-right"></i> Technical support</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3" style="float:right;">
+                        <div class="main-heading left_text">
+                            <h2>Contact us</h2>
+                        </div>
+                        <p>
+                            : Số 10 ngõ 20 Phố Nghĩa Đô,<br>
+                             Phường Nghĩa Đô, Quận Cầu Giấy, Hà Nội<br>
+                            <span style="font-size:18px;"><a href="tel:+9876543210">+987 654 3210</a></span>
+                        </p>
+                        <div class="footer_mail-section">
+                            <form>
+                                <fieldset>
+                                    <div class="field">
+                                        <input placeholder="Email" type="text">
+                                        <button class="button_custom"><i class="fa fa-envelope" aria-hidden="true"></i></button>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cprt">
+                <p>ItNext © Copyrights 2019 Design by html.design</p>
+            </div>
+        </div>
+    </div>
+</footer>*@
+
+<!-- end footer -->
+
+</html>

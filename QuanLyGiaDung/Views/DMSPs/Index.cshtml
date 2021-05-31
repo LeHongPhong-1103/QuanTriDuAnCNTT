@@ -1,0 +1,47 @@
+﻿@model PagedList.IPagedList<QuanLyGiaDung.Models.DMSP>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 style="text-align:center">Danh Mục Sản Phẩm</h2>
+@using (Html.BeginForm())
+{
+    <p>
+        Title: @Html.TextBox("SearchString") <input type="submit" value="Tìm kiếm" />
+    </p>
+}
+<p>
+    @Html.ActionLink("Thêm Mới", "Create")
+</p>
+<table class="table" border="1">
+    <tr>
+        <th>
+            Tên DMSP
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenDMSP)
+            </td>
+            <td>
+                @Html.ActionLink("Chỉnh Sửa", "Edit", new { id = item.MaDMSP }) |
+                @Html.ActionLink("Chi Tiết", "Details", new { id = item.MaDMSP }) |
+                @Html.ActionLink("Xóa", "Delete", new { id = item.MaDMSP })
+            </td>
+        </tr>
+    }
+
+</table>
+<!-- Thêm mã phân trang -->
+<br />
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+        new { page }))
+    <!-- Kết thúc -->

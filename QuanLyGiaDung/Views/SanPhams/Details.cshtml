@@ -1,0 +1,66 @@
+﻿@model QuanLyGiaDung.Models.SanPham
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Chi Tiết</h2>
+
+<div>
+    <h4>Sản Phẩm</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Ảnh Sản Phẩm
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnhSP)
+        </dd>
+
+        <dt>
+            Tên Sản Phẩm
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenSP)
+        </dd>
+
+        <dt>
+           Mô Tả
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.Mota)
+        </dd>
+
+        <dt>
+           Giá
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gia)
+        </dd>
+
+        <dt>
+            Sale
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sale)
+        </dd>
+
+        <dt>
+            Tên DMSP
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DMSP.TenDMSP)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Chỉnh Sửa", "Edit", new { id = Model.MaSP }) |
+    @Html.ActionLink("Quay Lại", "Index")
+</p>

@@ -1,0 +1,26 @@
+﻿@model QuanLyGiaDung.Models.DMSP
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Chi Tiết</h2>
+
+<div>
+    <h4>Danh Mục Sản Phẩm</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên DMSP
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenDMSP)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Chỉnh Sửa", "Edit", new { id = Model.MaDMSP }) |
+    @Html.ActionLink("Quay Lại", "Index")
+</p>

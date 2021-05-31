@@ -1,0 +1,72 @@
+﻿@model PagedList.IPagedList<QuanLyGiaDung.Models.TinTuc>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 style="text-align:center">Danh Sách Tin Tức</h2>
+@using (Html.BeginForm())
+{
+    <p>
+        Title: @Html.TextBox("SearchString") <input type="submit" value="Tìm kiếm" />
+    </p>
+}
+
+<p>
+    @Html.ActionLink("Tạo Mới", "Create")
+</p>
+<table class="table" border="1">
+    <tr>
+        <th width="100px"
+            Ảnh Tin Tức
+        </th>
+        <th width="100px">
+            Tên Tin Tức
+        </th>
+        <th width="150px">
+            Mô Tả
+        </th>
+        <th width="300px">
+            Chi Tiết
+        </th>
+        <th width="100px">
+            Tên DMTT
+        </th>
+        <th width="200px"></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img src="~/Anh/@item.AnhTinTuc" width="100px" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenTinTuc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MoTa)
+            </td>
+            <td>
+                @Html.Raw(item.Chitiet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DMTinTuc.TenDMTT)
+            </td>
+            <td>
+                @Html.ActionLink("Chỉnh Sửa", "Edit", new { id = item.MaTinTuc }) |
+                @Html.ActionLink("Chi Tiết", "Details", new { id = item.MaTinTuc }) |
+                @Html.ActionLink("Xóa", "Delete", new { id = item.MaTinTuc })
+            </td>
+        </tr>
+    }
+
+</table>
+<!-- Thêm mã phân trang -->
+<br />
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page }))
+<!-- Kết thúc -->

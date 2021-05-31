@@ -1,0 +1,58 @@
+﻿@model QuanLyGiaDung.Models.KhachHang
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Chi Tiết</h2>
+
+<div>
+    <h4>Khách Hàng</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+          Tên Khách Hàng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenKH)
+        </dd>
+
+        <dt>
+            Ngày Sinh
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgaySinh)
+        </dd>
+
+        <dt>
+           Địa Chỉ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SDT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SDT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Chỉnh Sửa", "Edit", new { id = Model.MaKH }) |
+    @Html.ActionLink("Quay Lại", "Index")
+</p>

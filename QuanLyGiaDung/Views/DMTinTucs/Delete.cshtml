@@ -1,0 +1,32 @@
+﻿@model QuanLyGiaDung.Models.DMTinTuc
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Bạn Có Muốn Xóa Thông Tin Này ?</h3>
+<div>
+    <h4>DMTinTuc</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên DMTT
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenDMTT)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Quay Lại", "Index")
+        </div>
+    }
+</div>

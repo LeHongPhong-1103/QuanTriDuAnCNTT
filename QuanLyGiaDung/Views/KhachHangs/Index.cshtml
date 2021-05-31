@@ -1,0 +1,80 @@
+﻿@model PagedList.IPagedList<QuanLyGiaDung.Models.KhachHang>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 style="text-align:center">Danh Sách Khách Hàng</h2>
+
+<p>
+    @using (Html.BeginForm())
+    {
+    <p>
+        Title: @Html.TextBox("SearchString") <input type="submit" value="Tìm kiếm" />
+    </p>
+}
+
+    <p>
+        @Html.ActionLink("Tạo Mới", "Create")
+    </p>
+    <table class="table" border="1">
+        <tr>
+            <th>
+                Mã Khách Hàng
+            </th>
+            <th>
+                Tên Khách Hàng
+            </th>
+            <th>
+                Ngày Sinh
+            </th>
+            <th>
+                Địa Chỉ
+            </th>
+            <th>
+                SDT
+            </th>
+            <th>
+                Email
+            </th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaKH)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenKH)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgaySinh)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DiaChi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SDT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.ActionLink("Chỉnh Sửa", "Edit", new { id = item.MaKH }) |
+                    @Html.ActionLink("Chi tiết", "Details", new { id = item.MaKH }) |
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.MaKH })
+                </td>
+            </tr>
+        }
+
+    </table>
+    <br />
+    <!-- Thêm mã phân trang -->
+    <br />
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+        new { page }))
+    <!-- Kết thúc -->
